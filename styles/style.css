@@ -70,3 +70,21 @@ a{
     border: 1px solid rgb(0, 0, 0);
     outline: none;
 }
+.carousel-content{
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.carousel{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+}
+.quiz-img-card>img{
+    height: 200px;
+    width: 200px;
+}
