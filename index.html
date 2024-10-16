@@ -21,11 +21,24 @@
             <h2 class="logo">QuizTitans</h2>
         </div>
         <div class="sign">
-            <a href="#" class="up">Sign Up</a>
-            <a href="#" class="in">Sign In</a>
+            <button class="login-btn" onclick="document.getElementById('login-page').style.display='block'">Login</button>
+            <button class="sign-in-btn" onclick="document.getElementById('signin-page').style.display='block'">Sign In</button>
         </div>
     </div>
-    
+
+    <div id="login-page">
+        <div class="login-content">
+            <form class="login-form" action="login">
+                <label for="username">Username</label>
+                <input type="email" name="email" id="email">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password">
+                <input type="submit" name="logged" id="logged-btn" value="Click">
+            </form>
+        </div>
+        <span onclick="document.getElementById('login-page').style.display='none'" class="close" title="Close Modal">Cancel</span>
+    </div>
+
     <div class="hero-section">
         <div class="heading">
             <h1 class="heading-main">QuizTitans GO!!</h1>

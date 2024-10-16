@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-center m-0 p-0 box-border">
+
+    <div class="w-full h-[25vh]">
+        <img class="w-full h-full object-cover object-[10%_85%]" src="assets/quiz-images-transformed.jpeg" alt="movie images">
+    </div>
+
+    <div class="sticky top-0 w-full flex justify-between items-center bg-[#E7473C] text-[#ffebcd] p-2">
+        <div class="flex gap-8 items-center ml-6">
+            <svg class="menu-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 512 512">
+                <g id="icomoon-ignore"></g>
+                <path d="M32 96h448v96h-448zM32 224h448v96h-448zM32 352h448v96h-448z"></path>
+            </svg>
+            <h2 class="text-lg font-bold">QuizTitans</h2>
+        </div>
+        <div class="flex gap-4 mr-6">
+            <button class="px-2 py-2 text-gray-100 bg-[#E7473C] text-lg" onclick="document.getElementById('login-page').style.display='block'">Login</button>
+            <button class="px-2 py-2 text-gray-100 bg-[#E7473C] text-lg" onclick="document.getElementById('signin-page').style.display='block'">Sign In</button>
+        </div>
+    </div>
+
+    <div id="login-page" class="hidden fixed w-full h-full flex justify-center items-center bg-black bg-opacity-50">
+        <div class="flex flex-wrap justify-center items-center w-[60%] mx-auto">
+            <div class="h-full">
+                <img src="assets/quiz-images-transformed.jpeg" class="w-[12rem] h-[15rem]">
+            </div>
+            <form class="bg-red-500 flex flex-col items-center gap-4 p-16" action="login">
+                <label for="username" class="text-white">Username</label>
+                <input type="email" name="email" id="email" class="rounded-full border-none p-2">
+                <label for="password" class="text-white">Password</label>
+                <input type="password" name="password" id="password" class="rounded-full border-none p-2">
+            </form>
+        </div>
+        <span onclick="document.getElementById('login-page').style.display='none'" class="absolute top-4 right-4 text-white cursor-pointer">Cancel</span>
+    </div>
+
+    <div class="flex justify-evenly items-center flex-wrap mt-12 md:mx-12 mx-0 gap-4">
+        <div class="ml-8">
+            <h1 class="font-bold text-orange-500 mb-3 text-2xl font-bold">QuizTitans GO!!</h1>
+            <p class="text-left">We've got all the quizzes you love to binge!<br>Come on in and hunker down for the long haul.</p>
+        </div>
+        <div class="flex flex-col items-center gap-4">
+            <input class="w-[20rem] p-2 rounded-full border border-gray-300 focus:outline-none focus:border-black" type="search" placeholder="search for quizzes">
+            <ul class="flex gap-4 list-none">
+                <li class="cursor-pointer">Anime</li>
+                <li class="cursor-pointer">Movies</li>
+                <li class="cursor-pointer">Science</li>
+                <li class="cursor-pointer">Nature</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>
