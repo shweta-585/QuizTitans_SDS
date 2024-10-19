@@ -4,13 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <!-- tailwind cdn -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- react bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="https://unpkg.com/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body class="bg-gray-100 text-center m-0 p-0 box-border">
 
     <!-- <div class="w-full h-[25vh]">
         <img class="w-full h-full object-cover object-[10%_85%]" src="assets/quiz-images-transformed.jpeg" alt="movie images">
     </div> -->
+
+    <div class="sticky top-0 w-full flex justify-between items-center bg-[#E7473C] text-[#ffebcd] p-2">
+        <div class="flex gap-8 items-center ml-6">
+            <button class="text-2xl cursor-pointer">&#9776;</button>
+            <h2 class="text-lg font-bold">QuizTitans</h2>
+        </div>
+        
+        <div id="off-canvas-root"></div>
+
+        <div class="flex gap-4 mr-6">
+            <a class="px-2 py-2 text-gray-100 bg-[#E7473C] text-lg" href="navbar-items/login.html">Login</a>
+            <a class="px-2 py-2 text-gray-100 bg-[#E7473C] text-lg" href="navbar-items/login.html">Sign In</a>
+        </div>
+    </div>
 
     <div class="flex justify-evenly items-center flex-wrap mt-12 md:mx-12 mx-0 gap-4">
         <div class="ml-8">
@@ -65,8 +83,25 @@
                 <img src="assets/24 FREE Ready-Made Travel Picture Quiz Rounds.jpeg" alt="" class="h-48 w-48 object-cover">
                 <p class="text-center mt-2">Play This Quiz</p>
             </div>
+            <div class="quiz-img-card"></div>
+                <img src="assets/24 FREE Ready-Made Travel Picture Quiz Rounds.jpeg" alt="" class="h-48 w-48 object-cover">
+                <p class="text-center mt-2">Play This Quiz</p>
+            </div>
+            <div class="quiz-img-card"></div>
+                <img src="assets/24 FREE Ready-Made Travel Picture Quiz Rounds.jpeg" alt="" class="h-48 w-48 object-cover">
+                <p class="text-center mt-2">Play This Quiz</p>
+            </div>
         </div>
     </div>
 
+    <!-- react dom -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-bootstrap@2.5.0/dist/react-bootstrap.min.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- off-canvas -->
+     <script type="module" src="navbar-items/off-canvas-menu.js"></script>
 </body>
 </html>
