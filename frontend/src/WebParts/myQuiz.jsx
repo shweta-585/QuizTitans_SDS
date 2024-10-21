@@ -11,7 +11,7 @@ const CreateQuiz = () => {
 
             <div>
               <label>Question </label>
-              <textarea className="quiz-input ques" type="text" placeholder="add question"/>
+              <textarea className="quiz-input ques" type="text" placeholder="add question" />
             </div>
 
             <div>
@@ -22,11 +22,11 @@ const CreateQuiz = () => {
             <button type='submit' value={'Save'} className='save-ques'>Save</button>
 
             <button type='submit' name='newQuestion' className='add-ques'>Add</button>
-          
+
           </form>
 
         </div>
-    </div>
+      </div>
     </div>
   )
 }
