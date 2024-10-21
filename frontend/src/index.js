@@ -4,14 +4,19 @@ import App from './App';
 import './styles/index.css'
 import { Auth0Provider } from '@auth0/auth0-react'
 
+const domain = process.env.REACT_APP_AUTH0_DOMAIN
+const clientID = process.env.REACT_APP_AUTH0_CLIENT_ID
+const redirectUri = process.env.REACT_APP_REDIRECT_URI;
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
     <Auth0Provider
-      domain='dev-lgfh33tsshamobc2.us.auth0.com'
-      clientId='AnUf8tGfLvXHfCIXLoFmsdh7wsilh5pa'
+      domain={domain}
+      clientId={clientID}
       authorizationParams={{
-        redirect_uri: "http://localhost:3000/create"
+        redirect_uri: redirectUri
       }}
     >
       <App />

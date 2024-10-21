@@ -20,7 +20,7 @@ const CreateQuiz = () => {
             </div>
 
             <button type='submit' value={'Save'} className='save-ques'>Save</button>
-    
+
             <button type='submit' name='newQuestion' className='add-ques'>Add</button>
           
           </form>
