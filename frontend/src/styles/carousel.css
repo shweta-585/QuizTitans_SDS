@@ -1,0 +1,12 @@
+.carousel-img{
+    height: 150px;
+    width: 150px;
+    margin-right: 0rem;
+}
+.carousel-container{
+    margin-top: 5vh;
+    padding: 0.5rem 0.5rem;
+}
+.carousel-cards{
+    border: 2px solid black;
+}
