@@ -11,7 +11,7 @@ root.render(
       domain='dev-lgfh33tsshamobc2.us.auth0.com'
       clientId='AnUf8tGfLvXHfCIXLoFmsdh7wsilh5pa'
       authorizationParams={{
-        redirect_uri: window.location.origin
+        redirect_uri: "http://localhost:3000/create"
       }}
     >
       <App />

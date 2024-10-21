@@ -1,4 +1,4 @@
-import { Container } from "@mui/material";
+// import { Container } from "@mui/material";
 import MyNavbar from "./WebParts/newnav";
 import MyCarousel from "./WebParts/myCarousel";
 import MyHeroes from "./WebParts/MyHeroes";
@@ -12,9 +12,8 @@ function App() {
   <>
     
     <Router>
-    <Container>
-
       <Routes>
+
         <Route path="/" element={ <MyLogin /> }/>
 
         <Route path="/home" element={
@@ -24,11 +23,17 @@ function App() {
             <MyCarousel />
           </>
         } />
-        <Route path="/create" element={<CreateQuiz />} />
-      </Routes>
 
-    </Container>
+        <Route path="/create" element={
+          <>
+            <MyNavbar />
+            <CreateQuiz />
+          </>
+        } />
+
+      </Routes>
     </Router>
+
   </>
   );
 }

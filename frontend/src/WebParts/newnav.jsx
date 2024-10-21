@@ -47,7 +47,7 @@
               <IconButton>
                 <HomeIcon />
               </IconButton>
-              <Button component={Link} to='/'>Home</Button>
+              <Button component={Link} to='/home'>Home</Button>
             </Box>
 
             <Box display="flex" alignItems="center" justifyContent="flex-start" mb={2}>
@@ -68,7 +68,7 @@
               <IconButton>
                 <LogoutIcon />
               </IconButton>
-              <Button component={Link} to='/logout'>Log Out</Button>
+              <Button component={Link} to='/'>Log Out</Button>
             </Box>
           </Box>
         </Drawer>

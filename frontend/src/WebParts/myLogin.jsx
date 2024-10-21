@@ -14,16 +14,16 @@ const MyLogin = () => {
 
   return (
     <>
-      <div className="container">
+      <div className="login-container">
         <div className="login-box">
 
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form className='login-form' onSubmit={handleSubmit(onSubmit)}>
 
             <div className="username">
                 <input {...register("email", { required: true })} 
                   type="email" 
                   placeholder="Username" 
-                  className='form-input' 
+                  className='login-input' 
                 />
                 { errors.email && <div>Username is required</div> }
             </div>
@@ -32,12 +32,12 @@ const MyLogin = () => {
                 <input {...register("password", { required: true , minLength: 3})} 
                   type="password" 
                   placeholder="Password" 
-                  className='form-input'
+                  className='login-input'
                 />
                 { errors.password && <div style={{color:'white'}}>Password length should be minimum 6</div> }
             </div>
 
-            <button disabled={isSubmitting} type="submit" value="login">Login</button>
+            <button className='login-btn' disabled={isSubmitting} type="submit" value="login">Login</button>
           </form>
         </div>
      </div>
