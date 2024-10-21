@@ -6,6 +6,7 @@ const MyLogin = () => {
   const { register, handleSubmit, formState: {errors, isSubmitting} } = useForm();
   const onSubmit = (data) => {
     console.log(data)
+    loginWithRedirect();
   }
 
   const { user, loginWithRedirect } = useAuth0();
@@ -36,7 +37,7 @@ const MyLogin = () => {
                 { errors.password && <div style={{color:'white'}}>Password length should be minimum 6</div> }
             </div>
 
-            <button onClick={loginWithRedirect} disabled={isSubmitting} type="submit" value="login">Login</button>
+            <button disabled={isSubmitting} type="submit" value="login">Login</button>
           </form>
         </div>
      </div>

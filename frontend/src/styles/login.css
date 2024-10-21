@@ -10,7 +10,7 @@
 }
 body {
     background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
-    font-family: "Azonix", sans-serif;
+    font-family: sans-serif;
     font-family: 'Lato';
     display: flex;
     justify-content: center;
