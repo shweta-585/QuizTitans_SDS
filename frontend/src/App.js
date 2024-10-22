@@ -5,6 +5,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route , Routes } from 'react-router-dom';
 import CreateQuiz from './WebParts/myQuiz'; 
 import MyLogin from './WebParts/myLogin';
+import Signup from "./WebParts/Signup";
 import './styles/App.css'
 
 function App() {
@@ -15,6 +16,10 @@ function App() {
       <Routes>
 
         <Route path="/" element={ <MyLogin /> }/>
+
+        <Route path="/login" element={ <MyLogin /> }/>
+
+        <Route path="/register" element={<Signup />} />
 
         <Route path="/home" element={
           <>
