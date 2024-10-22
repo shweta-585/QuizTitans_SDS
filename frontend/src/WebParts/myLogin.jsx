@@ -5,7 +5,6 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const MyLogin = () => {
-  
   const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm();
   const { user, loginWithRedirect } = useAuth0();
