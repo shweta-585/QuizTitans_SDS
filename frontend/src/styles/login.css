@@ -11,7 +11,7 @@
     justify-content: center;
 }
 .login-box {
-    height: 40vh;
+    height: fit-content;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -31,7 +31,7 @@
     width: 100%;
     padding: 0.8rem;
     border-radius: 5px;
-    margin-bottom: 3rem;
+    margin-top: 3rem;
     background-color: #ffffff1a;
     border: none;
     color: white;
@@ -41,16 +41,31 @@ outline: none;
 border: 2px solid rgb(197, 215, 251);
 }
 .login-btn {
-position: relative;
-width: 100%;
-padding: 0.8rem;
-border: 2px solid white;
-border-radius: 5px;
-cursor: pointer;
-background-color: #7084d6;
-color: rgb(246, 246, 246);
-box-shadow: inset 0 0 0.5em 0 rgb(228, 228, 228), 0 0 0.5em 0 rgb(228, 228, 228);
+    margin-top: 3rem;
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #7084d6;
+    color: rgb(246, 246, 246);
+    box-shadow: inset 0 0 0.5em 0 rgb(228, 228, 228), 0 0 0.5em 0 rgb(228, 228, 228);
+}
+.signin{
+    margin-top: 1rem;
+}
+.signin-btn{
+    border: none;
+    background-color: inherit;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
 }
 button:hover {
 transform: translateY(-2px);
+}
+.signin-btn:hover{
+    transform: translateY(0px);
+    color: #4e8deb;
 }
