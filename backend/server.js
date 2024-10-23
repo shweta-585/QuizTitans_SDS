@@ -12,7 +12,7 @@ app.use(cors());
 
 // Available Routes
 app.use('/auth', require('./routes/auth'));
-// app.use('/create', require('./routes/quiz'));
+app.use('/create', require('./routes/quiz'));
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
-const QuizSchema = new Schema({
+const QuestionSchema = new Schema({
     index: {
         type: Number,
         required: true
@@ -10,10 +10,38 @@ const QuizSchema = new Schema({
         type: String,
         required: true
     },
-    answer: {
+    opt1: {
+        type: String,
+        required: true
+    },
+    opt2: {
+        type: String,
+        required: true
+    },
+    opt3: {
+        type: String,
+        required: true
+    },
+    opt4: {
         type: String,
         required: true
     }
-  });
+});
 
-  module.exports = mongoose.model('quiz', QuizSchema)
+const QuizSchema = new Schema({
+    title: {
+        type: String,
+        required: true
+    },
+    questions: [QuestionSchema],
+    create_date: {
+        type: Date,
+        default: Date.now
+    },
+    update_date: {
+        type: Date,
+        default: Date.now
+    }
+});
+
+module.exports = mongoose.model('quiz', QuizSchema)

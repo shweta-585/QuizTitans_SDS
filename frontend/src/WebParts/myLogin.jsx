@@ -29,7 +29,6 @@ const MyLogin = () => {
 
       if (response.data === "Success") {
         console.log("Backend login successful, proceeding with Auth0...");
-        // After successful backend login, log in with Auth0
         await loginWithRedirect();
       }
       else if (response.data === "The password is incorrect") {
@@ -51,6 +50,7 @@ const MyLogin = () => {
     <div className="login-container">
       <div className="login-box">
         <form className='login-form' onSubmit={handleSubmit(onSubmit)}>
+
           <div className="username">
             <input {...register("email", { required: true })}
               type="email"
@@ -77,6 +77,7 @@ const MyLogin = () => {
             <p>Don't have an account? </p>
             <button onClick={() => navigate('/register')} type="button" className='signin-btn'>Register</button>
           </div>
+          
         </form>
       </div>
     </div>
