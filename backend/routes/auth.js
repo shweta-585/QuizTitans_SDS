@@ -12,7 +12,7 @@ app.use(cors());
 router.post("/register", async (req, res) => {
     try {
         console.log(req.body);
-        const { email } = req.body;
+        const { email, password } = req.body;
 
         const exists = await User.exists({ email });
 
@@ -21,7 +21,10 @@ router.post("/register", async (req, res) => {
             return res.status(400).json("User already exists. Please log in.");
         }
 
-        const user = new User(req.body);
+        const salt = await bcrypt.genSalt(10);
+        const hashedpasswd = await bcrypt.hash(password, salt);
+
+        const user = new User({ email, password: hashedpasswd });
         await user.save();
 
         res.status(201).json("User registered successfully");
@@ -41,12 +44,20 @@ router.post("/login", (req, res) => {
     User.findOne({ email: email })
         .then(user => {
             if (user) {
-                if (user.password === password) {
-                    res.json("Success")
-                }
-                else {
-                    res.json("The password is incorrect")
-                }
+                bcrypt.compare(password, user.password, (err, isMatch) => {
+                    if( err ) {
+                        console.log(err);
+                        return res.status(500).json("Server error");
+                    }
+
+                    if (isMatch) {
+                        res.json("Success")
+                    }
+    
+                    else {
+                        res.json("The password is incorrect")
+                    }
+                });
             }
             else {
                 res.json("No record existed")

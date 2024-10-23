@@ -1,3 +1,4 @@
+require('dotenv').config({ path: '.env' });
 const mongoos = require('mongoose');
 const mongoURI = 'mongodb://localhost:27017/';
 

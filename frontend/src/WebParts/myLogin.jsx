@@ -1,31 +1,38 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import '../styles/login.css';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const MyLogin = () => {
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm();
-  const { loginWithRedirect } = useAuth0();  // Auth0 login function
+  const { loginWithRedirect, isAuthenticated } = useAuth0();
   const [errMsg, SetErrMsg] = useState('');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/home");
+    }
+  }, [isAuthenticated, navigate]);
 
   const onSubmit = async (data) => {
     console.log(data);
     try {
-
       const response = await axios.post("http://localhost:4000/auth/login", {
-        email: data.email, 
+        email: data.email,
         password: data.password
       });
 
+      console.log(response);
+
       if (response.data === "Success") {
         console.log("Backend login successful, proceeding with Auth0...");
+        // After successful backend login, log in with Auth0
         await loginWithRedirect();
-        navigate("/home");
-      } 
-      else if( response.data === "The password is incorrect") {
+      }
+      else if (response.data === "The password is incorrect") {
         SetErrMsg("Incorrect password");
         console.log("Incorrect password");
       }
@@ -35,7 +42,7 @@ const MyLogin = () => {
       }
 
     } catch (error) {
-      console.log("Error loggin in", error);
+      console.log("Error logging in", error);
       SetErrMsg('Unexpected error during login');
     }
   }

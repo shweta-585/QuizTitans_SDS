@@ -1,0 +1,8 @@
+<input id='opt1' className="options" type="radio" />
+<label htmlFor='opt1'>2</label><br />
+<input id='opt2' className="options" type="radio" />
+<label htmlFor='opt2'>3</label><br />
+<input id='opt3' className="options" type="radio" />
+<label htmlFor='opt3'>1</label><br />
+<input id='opt4' className="options" type="radio" />
+<label htmlFor='opt4'>4</label>
