@@ -3,8 +3,7 @@ const { Schema } = mongoose;
 
 const QuestionSchema = new Schema({
     id: {
-        type: Number,
-        unique: true
+        type: Number
     },
     question: {
         type: String,
