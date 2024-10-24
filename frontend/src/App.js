@@ -9,11 +9,13 @@ import Signup from "./WebParts/Signup";
 import './styles/App.css';
 import CreateQuiz from './WebParts/CreateQuiz';
 import ViewQuiz from "./WebParts/ViewQuiz";
+import TakeQuiz from "./WebParts/TakeQuiz";
 // import PrivateRoute from "./WebParts/PrivateRoute";
 
 function App() {
   return (
     <Routes>
+
       <Route path="/" element={<MyLogin />} />
       <Route path="/login" element={<MyLogin />} />
       <Route path="/register" element={<Signup />} />
@@ -50,6 +52,14 @@ function App() {
         <>
           <MyNavbar />
           <ViewQuiz />
+        </>
+      }
+      />
+
+      <Route path="/attempt-quiz" element={
+        <>
+          <MyNavbar />
+          <TakeQuiz />
         </>
       }
       />

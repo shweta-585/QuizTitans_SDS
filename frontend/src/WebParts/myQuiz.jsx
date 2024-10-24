@@ -51,10 +51,10 @@ const CreateQuestions = () => {
     } 
     
     console.log(quizData);
-    // // send data to server
+    // send data to server
     try {
       console.log("Hello");
-      const response = await axios.post('http://localhost:4000/create/quiz', quizData);
+      const response = await axios.post('http://localhost:4000/quiz/create', quizData);
       console.log(response.data);
     } catch (error) {
       console.error("Error details:", error);

@@ -70,6 +70,7 @@
               </IconButton>
               <Button component={Link} to='/'>Log Out</Button>
             </Box>
+
           </Box>
         </Drawer>
       </>

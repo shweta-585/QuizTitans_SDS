@@ -41,4 +41,20 @@ router.post('/create', async(req, res) => {
 
 });
 
+router.get('/:quizId', async(req, res) => {
+    try {
+        const quizId = req.params.quizId;
+        const quiz = await User.findById(quizId);
+
+        if( !quiz ){
+            return res.status(404).json({message: "Quiz not found."});
+        }
+        res.status(200).json(quiz);
+
+    } catch (error) {
+        console.log("Error fetching quiz", error);
+        res.status(500).json({message: "Error fetching quiz."});
+    }
+});
+
 module.exports = router;
