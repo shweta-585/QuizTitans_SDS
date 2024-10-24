@@ -3,44 +3,72 @@ import { useNavigate } from 'react-router-dom';
 import '../styles/quiz.css';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
-import SaveIcon from '@mui/icons-material/Save';
+// import SaveIcon from '@mui/icons-material/Save';
+import axios from 'axios';
 
 const CreateQuestions = () => {
+
   const navigator = useNavigate();
-  const [questions, setQuestions] = useState([{id: 0, ques: '', opt1: '', opt2: '', opt3: '', opt4: ''}]);
+  const [questions, setQuestions] = useState([{ id: 0, question: '', correct_opt: '', wrong_opt1: '', wrong_opt2: '', wrong_opt3: '' }]);
 
   const addNewQuestion = () => {
     const lastQues = questions[questions.length - 1];
-    if (!lastQues.opt1 || !lastQues.opt2 || !lastQues.opt3 || !lastQues.opt4) {
+    console.log(lastQues)
+    if (!lastQues.question || !lastQues.correct_opt || !lastQues.wrong_opt1 || !lastQues.wrong_opt2 || !lastQues.wrong_opt3) {
       console.log(lastQues);
       return;
     }
-    setQuestions([...questions, { id: questions.length, ques: '', opt1: '', opt2: '', opt3: '', opt4: '' }]);
+    setQuestions([...questions, { id: questions.length, question: '', correct_opt: '', wrong_opt1: '', wrong_opt2: '', wrong_opt3: '' }]);
   };
 
   const removeQuestion = (index) => {
     const updatedQuestions = [...questions];
     updatedQuestions.splice(index, 1);
     if (updatedQuestions.length === 0) {
-      // setShowForm(false);
       navigator('/create');
     }
     const changeIds = updatedQuestions.map((question, idx) => ({
-      ...question,
       id: idx,
+      ...question,
     }));
     setQuestions(changeIds);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  // };
 
-  const HandleUpload = () => {
+  const HandleUpload = async () => {
+    
+
     const lastQues = questions[questions.length - 1];
-    if (!lastQues.opt1 || !lastQues.opt2 || !lastQues.opt3 || !lastQues.opt4) {
-      console.log(lastQues);
+    if (!lastQues.question || !lastQues.correct_opt || !lastQues.wrong_opt1 || !lastQues.wrong_opt2 || !lastQues.wrong_opt3) {
       return;
+    }
+
+    const quizInfo = JSON.parse(localStorage.getItem('quizInfo'));
+
+    const quizData = {
+      ...quizInfo,
+      questions
+    } 
+    
+    console.log(quizData);
+    // // send data to server
+    try {
+      console.log("Hello")
+      const response = await axios.post('http://localhost:4000/create/quiz', quizData);
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error details:", error);
+      if (error.response) {
+        console.error("Server responded with:", error.response.data);
+        console.error("Status code:", error.response.status);
+      } else if (error.request) {
+        console.error("No response received:", error.request);
+      } else {
+        console.error("Error setting up the request:", error.message);
+      }
     }
   }
 
@@ -51,7 +79,7 @@ const CreateQuestions = () => {
           {questions.map((question, index) => (
             <form key={index} className="quiz-form">
               {index === questions.length - 1 && (
-                <button href="upload" className='upload-quiz' onClick={HandleUpload}>Upload</button>
+                <button type='button' className='upload-quiz' onClick={() => HandleUpload(questions)}>Upload</button>
               )}
               <div>
                 <label>Question {index + 1}</label>
@@ -59,10 +87,10 @@ const CreateQuestions = () => {
                   className="quiz-input ques"
                   type="text"
                   placeholder="Create question.."
-                  value={question.ques || ''}
+                  value={question.question || ''}
                   onChange={(e) => {
                     const newQuestion = [...questions];
-                    newQuestion[index].ques = e.target.value;
+                    newQuestion[index].question = e.target.value;
                     setQuestions(newQuestion);
                   }}
                   required />
@@ -71,58 +99,58 @@ const CreateQuestions = () => {
               <div>
                 <label className="label-answer">Correct answer </label><br />
 
-                <label className="options-label" htmlFor={`opt1-${index}`}>1</label>
+                <label className="options-label" htmlFor={`correct_opt-${index}`}>1</label>
                 <textarea
-                  id={`opt1-${index}`}
+                  id={`correct_opt-${index}`}
                   className="options"
                   type="text"
-                  value={question.opt1 || ''}
+                  value={question.correct_opt || ''}
                   onChange={(e) => {
                     const newQuestions = [...questions];
-                    newQuestions[index].opt1 = e.target.value;
+                    newQuestions[index].correct_opt = e.target.value;
                     setQuestions(newQuestions);
                   }}
                   required
                 /><br />
 
                 <label className="label-answer">Other answers </label><br />
-                <label className="options-label" htmlFor={`opt2-${index}`}>2</label>
+                <label className="options-label" htmlFor={`wrong_opt1-${index}`}>2</label>
                 <textarea
-                  id={`opt2-${index}`}
+                  id={`wrong_opt1-${index}`}
                   className="options"
                   type="text"
-                  value={question.opt2 || ''}
+                  value={question.wrong_opt1 || ''}
                   onChange={(e) => {
                     const newQuestions = [...questions];
-                    newQuestions[index].opt2 = e.target.value;
+                    newQuestions[index].wrong_opt1 = e.target.value;
                     setQuestions(newQuestions);
                   }}
                   required
                 /><br />
 
-                <label className="options-label" htmlFor={`opt3-${index}`}>3</label>
+                <label className="options-label" htmlFor={`wrong_opt2-${index}`}>3</label>
                 <textarea
-                  id={`opt3-${index}`}
+                  id={`wrong_opt2-${index}`}
                   className="options"
                   type="text"
-                  value={question.opt3 || ''}
+                  value={question.wrong_opt2 || ''}
                   onChange={(e) => {
                     const newQuestions = [...questions];
-                    newQuestions[index].opt3 = e.target.value;
+                    newQuestions[index].wrong_opt2 = e.target.value;
                     setQuestions(newQuestions);
                   }}
                   required
                 /><br />
 
-                <label className="options-label" htmlFor={`opt4-${index}`}>4</label>
+                <label className="options-label" htmlFor={`wrong_opt3-${index}`}>4</label>
                 <textarea
-                  id={`opt4-${index}`}
+                  id={`wrong_opt3-${index}`}
                   className="options"
                   type="text"
-                  value={question.opt4 || ''}
+                  value={question.wrong_opt3 || ''}
                   onChange={(e) => {
                     const newQuestions = [...questions];
-                    newQuestions[index].opt4 = e.target.value;
+                    newQuestions[index].wrong_opt3 = e.target.value;
                     setQuestions(newQuestions);
                   }}
                   required
@@ -131,7 +159,7 @@ const CreateQuestions = () => {
 
               <button type="button" className="add-ques" onClick={addNewQuestion}><AddIcon /></button>
               <button type="button" className="save-ques" onClick={() => removeQuestion(index)}><DeleteIcon /></button>
-              <button type="button" className="save-ques" onClick={handleSubmit}><SaveIcon /></button>
+              {/* <button type="button" className="save-ques" onClick={handleSubmit}><SaveIcon /></button> */}
             </form>
           ))}
         </div>

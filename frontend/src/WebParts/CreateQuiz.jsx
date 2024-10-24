@@ -5,14 +5,18 @@ import { useNavigate } from 'react-router-dom';
 const CreateQuiz = () => {
 
   const [title, SetTitle] = useState('');
-  const [descrip, SetDescrip] = useState('');
+  const [description, SetDescrip] = useState('');
   const [extra, SetExtra] = useState(false);
 
   const navigator = useNavigate();
 
-  const QuizMaking = (e) => {
+  const QuizMaking = async (e) => {
+    console.log(extra);
     e.preventDefault();
-    console.log(title, descrip, extra);
+    if (!title || !description ) {
+      return;
+    }
+    console.log(title, description);
     navigator('/quiz');
   }
 
@@ -21,17 +25,15 @@ const CreateQuiz = () => {
 
       <form className='create-quiz-form' onSubmit={QuizMaking}>
         <label>Title</label>
-        <input 
+        <textarea 
           className='title' 
-          type="text" 
           onChange={(e) => SetTitle(e.target.value)}
           required
         />
 
         <label>Description</label>
-        <input 
+        <textarea 
           className='describe' 
-          type="text" 
           onChange={(e) => SetDescrip(e.target.value)}
           required
         />
@@ -41,7 +43,6 @@ const CreateQuiz = () => {
           className='future-access' 
           type="checkbox" 
           onChange={(e) => SetExtra(e.target.value)}
-          required
         />
 
         <button type="submit" className='submit' to='/quiz' >Create Quiz</button>

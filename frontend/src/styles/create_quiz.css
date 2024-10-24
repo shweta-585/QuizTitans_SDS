@@ -22,9 +22,10 @@ label{
     margin-bottom: 1rem;
     margin-top: 2rem;
 }
-input[type=text]{
+textarea{
     padding: 0.5rem 1rem;
     text-align: center;
+    resize: none;
 }
 .submit{
     margin-top: 2rem;
