@@ -8,6 +8,7 @@ import MyLogin from './WebParts/myLogin';
 import Signup from "./WebParts/Signup";
 import './styles/App.css';
 import CreateQuiz from './WebParts/CreateQuiz';
+import ViewQuiz from "./WebParts/ViewQuiz";
 // import PrivateRoute from "./WebParts/PrivateRoute";
 
 function App() {
@@ -34,7 +35,6 @@ function App() {
         <>
           <MyNavbar />
           <CreateQuiz />
-          {/* <CreateQuestions /> */}
         </>
       } />
 
@@ -42,6 +42,14 @@ function App() {
         <>
           <MyNavbar />
           <CreateQuestions />
+        </>
+      }
+      />
+
+      <Route path="/show" element={
+        <>
+          <MyNavbar />
+          <ViewQuiz />
         </>
       }
       />

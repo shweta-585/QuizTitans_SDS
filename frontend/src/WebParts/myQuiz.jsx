@@ -34,10 +34,6 @@ const CreateQuestions = () => {
     setQuestions(changeIds);
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  // };
-
   const HandleUpload = async () => {
     
 
@@ -47,6 +43,7 @@ const CreateQuestions = () => {
     }
 
     const quizInfo = JSON.parse(localStorage.getItem('quizInfo'));
+    console.log(quizInfo);
 
     const quizData = {
       ...quizInfo,
@@ -56,7 +53,7 @@ const CreateQuestions = () => {
     console.log(quizData);
     // // send data to server
     try {
-      console.log("Hello")
+      console.log("Hello");
       const response = await axios.post('http://localhost:4000/create/quiz', quizData);
       console.log(response.data);
     } catch (error) {

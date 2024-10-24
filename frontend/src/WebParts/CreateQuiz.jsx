@@ -16,7 +16,9 @@ const CreateQuiz = () => {
     if (!title || !description ) {
       return;
     }
-    console.log(title, description);
+    const quizInfo = { title, description, extra };
+    localStorage.setItem('quizInfo', JSON.stringify(quizInfo));
+    console.log(quizInfo);
     navigator('/quiz');
   }
 

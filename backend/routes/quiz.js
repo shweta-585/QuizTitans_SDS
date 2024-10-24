@@ -12,8 +12,17 @@ app.use(cors({
     }
 ));
 
-router.post('/quiz', async(req, res) => {
-    
+router.get("/show", async(req, res) => {
+    try {
+        const quizzes = await User.find();
+        res.status(200).json(quizzes);
+    } catch (error) {
+        console.log("Error getting Quiz Data", error);
+        res.status(500).json("Error retrieving quizzes");
+    }
+});
+
+router.post('/create', async(req, res) => {
     
     try {
         console.log("Server says Hi");
@@ -21,7 +30,7 @@ router.post('/quiz', async(req, res) => {
         const { title, description, questions, extra } = req.body;
 
         const user = new User({ title, description, questions, extra });
-        console.log(user)
+        console.log(user);
         await user.save();
 
         res.status(200).json("Quiz Saved Successfully");
@@ -29,6 +38,7 @@ router.post('/quiz', async(req, res) => {
         console.log("Error saving data", error);
         res.status(500).json("Error");
     }
+
 });
 
 module.exports = router;

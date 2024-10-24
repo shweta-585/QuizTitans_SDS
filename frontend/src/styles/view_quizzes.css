@@ -1,0 +1,24 @@
+.view_list{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 5rem;
+}
+.view_box{
+    box-sizing: content-box;
+    width: 250px;
+    min-height: 150px;
+    background-color: #ffffff2f;
+    padding: 1rem;
+}
+.take-quiz-btn{
+    margin-top: 1rem;
+    background-color: #269c1b;
+    border: none;
+    padding: 0.5rem;
+    color: white;
+    cursor: pointer;
+}
