@@ -1,5 +1,4 @@
 import MyNavbar from "./WebParts/newnav";
-import MyHeroes from "./WebParts/MyHeroes";
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import CreateQuestions from './WebParts/myQuiz';
