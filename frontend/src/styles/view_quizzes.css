@@ -1,3 +1,10 @@
+.view_container{
+    min-height: 100vh;
+    max-height: fit-content;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('../assets/why-question-reason-curious-confuse-concept.jpg') center/cover no-repeat;
+}
+
 .view_list{
     width: 100%;
     display: flex;
@@ -5,7 +12,6 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 2rem;
-    margin-top: 5rem;
 }
 .view_box{
     box-sizing: content-box;
@@ -13,6 +19,7 @@
     min-height: 150px;
     background-color: #ffffff2f;
     padding: 1rem;
+    margin-top: 5rem;
 }
 .take-quiz-btn{
     margin-top: 1rem;

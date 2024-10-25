@@ -1,5 +1,4 @@
 import MyNavbar from "./WebParts/newnav";
-import MyCarousel from "./WebParts/myCarousel";
 import MyHeroes from "./WebParts/MyHeroes";
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
@@ -10,7 +9,9 @@ import './styles/App.css';
 import CreateQuiz from './WebParts/CreateQuiz';
 import ViewQuiz from "./WebParts/ViewQuiz";
 import TakeQuiz from "./WebParts/TakeQuiz";
+import StudentNav from "./WebParts/StudentNav";
 import PrivateRoute from "./WebParts/PrivateRoute";
+import AdminHeroes from "./WebParts/AdminHeroes";
 
 function App() {
   return (
@@ -20,28 +21,19 @@ function App() {
       <Route path="/login" element={<MyLogin />} />
       <Route path="/register" element={<Signup />} />
 
-      <Route
-        path="/home"
-        element={
-          <PrivateRoute>
-            {/* <MyNavbar /> */}
-            <MyCarousel />
-          </PrivateRoute>
-        } />
-
       <Route path="/admin-dashboard"
         element={
           <PrivateRoute>
             <MyNavbar />
+            <AdminHeroes />
           </PrivateRoute>
         } />
 
       <Route path="/student-dashboard"
         element={
           <PrivateRoute>
-            {/* <StudentNavbar /> */}
-            <MyNavbar />
-            <MyHeroes />
+            <StudentNav />
+            {/* <MyHeroes /> */}
             <ViewQuiz />
           </PrivateRoute>
         } />
@@ -71,7 +63,7 @@ function App() {
 
       <Route path="/attempt-quiz" element={
         <>
-          <MyNavbar />
+          <StudentNav />
           <TakeQuiz />
         </>
       }
