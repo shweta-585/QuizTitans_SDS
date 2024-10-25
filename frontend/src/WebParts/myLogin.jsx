@@ -7,15 +7,21 @@ import axios from 'axios';
 
 const MyLogin = () => {
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm();
-  const { loginWithRedirect, isAuthenticated } = useAuth0();
+  const { loginWithPopup, isAuthenticated } = useAuth0();
   const [errMsg, SetErrMsg] = useState('');
   const navigate = useNavigate();
+  const [role, SetRole] = useState('');
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("/home");
+      if ( role === "Admin" ){
+        navigate("/admin-dashboard");
+      } 
+      else {
+        navigate("/student-dashboard");  
+      }
     }
-  }, [isAuthenticated, navigate]);
+  }, [isAuthenticated, navigate, role]);
 
   const onSubmit = async (data) => {
     console.log(data);
@@ -28,8 +34,9 @@ const MyLogin = () => {
       console.log(response);
 
       if (response.data === "Success") {
+        SetRole(response.data.role);
         console.log("Backend login successful, proceeding with Auth0...");
-        await loginWithRedirect();
+        await loginWithPopup();
       }
       else if (response.data === "The password is incorrect") {
         SetErrMsg("Incorrect password");
@@ -44,7 +51,7 @@ const MyLogin = () => {
       console.log("Error logging in", error);
       SetErrMsg('Unexpected error during login');
     }
-  }
+  };
 
   return (
     <div className="login-container">

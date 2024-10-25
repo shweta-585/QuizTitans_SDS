@@ -12,7 +12,7 @@ app.use(cors());
 router.post("/register", async (req, res) => {
     try {
         console.log(req.body);
-        const { email, password } = req.body;
+        const { email, password, role } = req.body;
 
         const exists = await User.exists({ email });
 
@@ -24,7 +24,7 @@ router.post("/register", async (req, res) => {
         const salt = await bcrypt.genSalt(10);
         const hashedpasswd = await bcrypt.hash(password, salt);
 
-        const user = new User({ email, password: hashedpasswd });
+        const user = new User({ email, password: hashedpasswd, role });
         await user.save();
 
         res.status(201).json("User registered successfully");

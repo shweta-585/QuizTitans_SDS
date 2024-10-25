@@ -1,5 +1,5 @@
 import MyNavbar from "./WebParts/newnav";
-// import MyCarousel from "./WebParts/myCarousel";
+import MyCarousel from "./WebParts/myCarousel";
 import MyHeroes from "./WebParts/MyHeroes";
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
@@ -12,22 +12,22 @@ import ViewQuiz from "./WebParts/ViewQuiz";
 import TakeQuiz from "./WebParts/TakeQuiz";
 import AdminUser from "./WebParts/AdminUser";
 import AdminDashboard from "./WebParts/AdminDashboard";
-// import PrivateRoute from "./WebParts/PrivateRoute";
+import PrivateRoute from "./WebParts/PrivateRoute";
 
 function App() {
   return (
     <Routes>
 
-      <Route path="/" element={<AdminUser />} />
+      <Route path="/" element={<MyLogin />} />
       <Route path="/login" element={<MyLogin />} />
       <Route path="/register" element={<Signup />} />
 
-      <Route 
+      <Route
         path="/admin"
         element={<AdminDashboard />}
       />
 
-      <Route 
+      <Route AdminUser
         path="/student"
         element={<ViewQuiz />}
       />
@@ -35,15 +35,27 @@ function App() {
       <Route
         path="/home"
         element={
-          // <PrivateRoute>
-          <>
-            <MyNavbar />
+          <PrivateRoute>
+            {/* <MyNavbar /> */}
             <MyHeroes />
-            {/* <MyCarousel /> */}
-          </>
-          // {/* </PrivateRoute> */}
-        }
-      />
+            <AdminUser />
+            <MyCarousel />
+          </PrivateRoute>
+        } />
+
+      <Route path="/admin-dashboard"
+        element={
+          <PrivateRoute>
+            <MyNavbar />
+          </PrivateRoute>
+        } />
+
+      <Route path="/student-dashboard"
+        element={
+          <PrivateRoute>
+            <MyNavbar />
+          </PrivateRoute>
+        } />
 
       <Route path="/create" element={
         <>

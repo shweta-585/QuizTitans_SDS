@@ -69,3 +69,16 @@ transform: translateY(-2px);
     transform: translateY(0px);
     color: #4e8deb;
 }
+.role-decide > button{
+    margin-top: 2rem;
+    padding: 0.8rem;
+    cursor: pointer;
+    /* background-color: #7084d6; */
+    /* box-shadow: inset 0 0 0.5em 0 rgb(228, 228, 228), 0 0 0.5em 0 rgb(228, 228, 228); */
+    color: whitesmoke;
+    border: none;   
+    font-size: 1rem;
+}
+.role-decide > button:active{
+    background-color: #3e60bd77;
+}

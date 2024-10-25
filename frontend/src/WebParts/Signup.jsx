@@ -8,13 +8,17 @@ function Signup() {
     const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm();
     const [errMsg, setErrMsg] = useState("");
     const navigate = useNavigate();
+    const [role, SetRole] = useState("Admin");
+
+    console.log(role);
 
     const onSubmit = async (data) => {
 
         try {
             const response = await axios.post('http://localhost:4000/auth/register', {
                 email: data.email,
-                password: data.password
+                password: data.password,
+                role: role
             });
 
             console.log("SignupComponent", response.data);
@@ -64,11 +68,16 @@ function Signup() {
                         </div>
                         {errMsg && <div style={{ color: 'white', marginBottom: '10px' }}>{errMsg}</div>}
 
+                        <div className="role-decide">
+                            <button className='admin-register' type='button' onClick={() => SetRole("Admin")} style={{backgroundColor: role === "Admin" ? 'blue' : 'white'}}>Admin</button>
+                            <button className='student-register' type='button' onClick={() => SetRole("Student")} style={{backgroundColor: role === "Student" ? 'blue' : 'white'}}>Student</button>
+                        </div>
+
                         <button className='login-btn' disabled={isSubmitting} type="submit" value="login">Register</button>
 
                         <div className='signin'>
                             <p>Already have an account? </p>
-                            <button onClick={() => navigate('/login')} type="button" className='signin-btn' >Login</button>
+                            <button onClick={() => navigate('/login')} type="submit" className='signin-btn' >Login</button>
                         </div>
 
                     </form>
