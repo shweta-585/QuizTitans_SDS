@@ -49,12 +49,12 @@ const CreateQuestions = () => {
       questions
     } 
     
-    console.log(quizData);
     // send data to server
     try {
       console.log("Hello");
       const response = await axios.post('http://localhost:4000/quiz/create', quizData);
       console.log(response.data);
+      navigator('/create');
     } catch (error) {
       console.error("Error details:", error);
       if (error.response) {

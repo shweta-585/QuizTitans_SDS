@@ -16,6 +16,7 @@
     background-color: green;
     color: #ebeaea;
     padding: 0.5rem;
+    cursor: pointer;
 }
 .quiz-box{
     height: fit-content;
