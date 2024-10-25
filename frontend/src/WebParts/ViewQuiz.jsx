@@ -41,7 +41,7 @@ const ViewQuiz = () => {
                         <p>{quiz.description}</p>
                         <button className='take-quiz-btn' onClick={() => takeQuiz(quiz._id)}>Take Quiz</button>
                     </li>
-                ))};
+                ))}
             </ul>
 
         </div>

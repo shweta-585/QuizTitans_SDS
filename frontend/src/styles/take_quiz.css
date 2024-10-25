@@ -1,0 +1,38 @@
+.take-quiz-box{
+    margin: auto;
+    width: fit-content;
+    background-color: #00000055;
+    border-radius: 10px;
+
+}
+.take-quiz-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    padding: 1.5rem 3rem;
+    background-color: #bab8f255;
+    border-radius: 10px;
+}
+.quiz-title{
+    margin: 2rem 0rem;
+}
+.quiz-descp{
+    margin-bottom: 2rem;
+}
+.options{
+    text-align: left;
+    color: black;
+}
+.radio-btn{
+    margin-right: 0.5rem;
+}
+.submit-btn{
+    border: none;
+    padding: 0.6rem;
+    cursor: pointer;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+    font-size: 1rem;
+}
