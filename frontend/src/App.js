@@ -10,35 +10,21 @@ import './styles/App.css';
 import CreateQuiz from './WebParts/CreateQuiz';
 import ViewQuiz from "./WebParts/ViewQuiz";
 import TakeQuiz from "./WebParts/TakeQuiz";
-import AdminUser from "./WebParts/AdminUser";
-import AdminDashboard from "./WebParts/AdminDashboard";
 import PrivateRoute from "./WebParts/PrivateRoute";
 
 function App() {
   return (
     <Routes>
 
-      <Route path="/" element={<MyLogin />} />
+      <Route path="/" element={<Signup />} />
       <Route path="/login" element={<MyLogin />} />
       <Route path="/register" element={<Signup />} />
-
-      <Route
-        path="/admin"
-        element={<AdminDashboard />}
-      />
-
-      <Route AdminUser
-        path="/student"
-        element={<ViewQuiz />}
-      />
 
       <Route
         path="/home"
         element={
           <PrivateRoute>
             {/* <MyNavbar /> */}
-            <MyHeroes />
-            <AdminUser />
             <MyCarousel />
           </PrivateRoute>
         } />
@@ -53,7 +39,10 @@ function App() {
       <Route path="/student-dashboard"
         element={
           <PrivateRoute>
+            {/* <StudentNavbar /> */}
             <MyNavbar />
+            <MyHeroes />
+            <ViewQuiz />
           </PrivateRoute>
         } />
 

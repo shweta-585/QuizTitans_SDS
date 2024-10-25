@@ -10,8 +10,6 @@ function Signup() {
     const navigate = useNavigate();
     const [role, SetRole] = useState("Admin");
 
-    console.log(role);
-
     const onSubmit = async (data) => {
 
         try {
@@ -20,7 +18,6 @@ function Signup() {
                 password: data.password,
                 role: role
             });
-
             console.log("SignupComponent", response.data);
             navigate('/login');
             setErrMsg("");

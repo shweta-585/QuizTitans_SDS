@@ -1,44 +1,36 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import '../styles/login.css';
 import { useForm } from 'react-hook-form';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const MyLogin = () => {
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm();
-  const { loginWithPopup, isAuthenticated } = useAuth0();
+  const { loginWithPopup } = useAuth0();
   const [errMsg, SetErrMsg] = useState('');
   const navigate = useNavigate();
-  const [role, SetRole] = useState('');
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      if ( role === "Admin" ){
-        navigate("/admin-dashboard");
-      } 
-      else {
-        navigate("/student-dashboard");  
-      }
-    }
-  }, [isAuthenticated, navigate, role]);
 
   const onSubmit = async (data) => {
-    console.log(data);
     try {
       const response = await axios.post("http://localhost:4000/auth/login", {
         email: data.email,
         password: data.password
       });
 
-      console.log(response);
+      console.log(response.data.role);
 
-      if (response.data === "Success") {
-        SetRole(response.data.role);
+      if (response.data.message === "Success") {
         console.log("Backend login successful, proceeding with Auth0...");
+        if( response.data.role === "Admin" ){
+          navigate('/admin-dashboard');
+        }
+        else{
+          navigate('/student-dashboard');
+        }
         await loginWithPopup();
       }
-      else if (response.data === "The password is incorrect") {
+      else if (response.data.message === "The password is incorrect") {
         SetErrMsg("Incorrect password");
         console.log("Incorrect password");
       }
@@ -52,6 +44,15 @@ const MyLogin = () => {
       SetErrMsg('Unexpected error during login');
     }
   };
+  // useEffect(() => {
+  //   if (isAuthenticated) {
+  //     if (role === "Admin") {
+  //       navigate("/admin-dashboard");
+  //     } else if (role) {
+  //       navigate("/student-dashboard");
+  //     }
+  //   }
+  // }, [isAuthenticated, navigate]);
 
   return (
     <div className="login-container">
@@ -78,13 +79,13 @@ const MyLogin = () => {
 
           {errMsg && <div style={{ color: 'white', marginBottom: '10px' }}>{errMsg}</div>}
 
-          <button className='login-btn' disabled={isSubmitting} type="submit">Login</button>
+          <button className='login-btn' disabled={isSubmitting}>Login</button>
 
           <div className='signin'>
             <p>Don't have an account? </p>
             <button onClick={() => navigate('/register')} type="button" className='signin-btn'>Register</button>
           </div>
-          
+
         </form>
       </div>
     </div>

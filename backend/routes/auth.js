@@ -51,7 +51,7 @@ router.post("/login", (req, res) => {
                     }
 
                     if (isMatch) {
-                        res.json("Success")
+                        res.json({"message":"Success", "role":`${user.role}`});
                     }
     
                     else {

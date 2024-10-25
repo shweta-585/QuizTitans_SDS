@@ -21,6 +21,7 @@ root.render(
       onRedirectCallback={(appState) => {
         window.history.replaceState({}, document.title, appState?.targetUrl || window.location.pathname);
       }}
+      cacheLocation='localstorage'
     >
       <App />
     </Auth0Provider>

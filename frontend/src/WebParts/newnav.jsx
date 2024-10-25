@@ -7,10 +7,12 @@
   import AddIcon from '@mui/icons-material/Add';
   import PsychologyAltIcon from '@mui/icons-material/PsychologyAlt';
   import LogoutIcon from '@mui/icons-material/Logout';
-  import { Link } from 'react-router-dom';
+  import { useNavigate } from 'react-router-dom';
+  import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
   const MyNavbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const navigate = useNavigate();
 
     const isClose = (open) => (event) => {
       if (event.type === 'keydown') {
@@ -18,6 +20,7 @@
       }
       setIsOpen(open);
     };
+
 
     return (
       <>
@@ -27,6 +30,7 @@
               &#9776;
             </button>
             <h2 className="logo">QuizTitans</h2>
+            <h4><AccountCircleIcon/>Admin Login</h4>
           </div>  
         </div>
 
@@ -41,28 +45,28 @@
               <IconButton>
                 <HomeIcon />
               </IconButton>
-              <Button component={Link} to='/home'>Home</Button>
+              <Button onClick={() => navigate('/home') } >Home</Button>
             </Box>
 
             <Box display="flex" alignItems="center" justifyContent="flex-start" mb={2}>
               <IconButton to='/create'>
                 <AddIcon />
               </IconButton>
-              <Button component={Link} to='/create'>Create Quiz</Button>
+              <Button onClick={() => navigate('/create') } >Create Quiz</Button>
             </Box>
 
             <Box display="flex" alignItems="center" justifyContent="flex-start" mb={2}>
               <IconButton>
                 <PsychologyAltIcon />
               </IconButton>
-              <Button component={Link} to='/show'>Show Quiz</Button>
+              <Button onClick={() => navigate('/show') } >Show Quiz</Button>
             </Box>
 
             <Box display="flex" alignItems="center" justifyContent="flex-start" mb={2}>
               <IconButton>
                 <LogoutIcon />
               </IconButton>
-              <Button component={Link} to='/'>Log Out</Button>
+              <Button onClick={() => navigate('/login') } >Log Out</Button>
             </Box>
 
           </Box>

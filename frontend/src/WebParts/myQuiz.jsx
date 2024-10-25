@@ -36,7 +36,6 @@ const CreateQuestions = () => {
 
   const HandleUpload = async () => {
     
-
     const lastQues = questions[questions.length - 1];
     if (!lastQues.question || !lastQues.correct_opt || !lastQues.wrong_opt1 || !lastQues.wrong_opt2 || !lastQues.wrong_opt3) {
       return;
