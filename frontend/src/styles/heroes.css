@@ -6,14 +6,15 @@
     align-items: center;
     flex-wrap: wrap;
     margin-left: 3rem;
-    gap: 1rem;
+    gap: 3rem;
+    flex-direction: column;
 }
 .heading{
     margin-left: 2rem;
 }
 .heading-main{
-    font-style: oblique;
-    color: rgb(255, 102, 0);
+    font-size: 3rem;
+    color: rgb(223, 115, 0);
     margin-bottom: 0.7rem;
 }
 .heading-sub{
@@ -24,23 +25,24 @@
         margin-left: 0;
     }
 }
-.search-box{
-    width: 20rem;
-    padding: 0.7rem 1rem;
-    border-radius: 20px;
-    border: 1px solid gainsboro;
+.user-login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    background: #4c8fe1cc;
+    gap: 2rem;
+    color: black;
+    padding: 1rem;
+    width: 300px;
+    color: aliceblue;
+    border-radius: 10px;
 }
-.search-box:focus{
-    border: 1px solid rgb(0, 0, 0);
-    outline: none;
-}
-ul{
-    list-style: none;
-    overflow: hidden;
-}
-.search-options>li{
-    float: left;
-    margin: 1rem;
+.stud-reg-btn{
+    border: none;
+    padding: 0.8rem;
+    background-color: #093e6b;
+    color: aliceblue;
     cursor: pointer;
-    font-size: 0.8rem;
 }

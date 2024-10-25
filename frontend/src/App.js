@@ -1,5 +1,5 @@
 import MyNavbar from "./WebParts/newnav";
-import MyCarousel from "./WebParts/myCarousel";
+// import MyCarousel from "./WebParts/myCarousel";
 import MyHeroes from "./WebParts/MyHeroes";
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
@@ -27,7 +27,7 @@ function App() {
           <>
             <MyNavbar />
             <MyHeroes />
-            <MyCarousel />
+            {/* <MyCarousel /> */}
           </>
           // {/* </PrivateRoute> */}
         }

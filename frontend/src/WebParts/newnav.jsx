@@ -27,13 +27,7 @@
               &#9776;
             </button>
             <h2 className="logo">QuizTitans</h2>
-          </div>
-          <div className="sign">
-            <a href="google.com">Sign Up</a>
-            <a className="in" href="myLogin.jsx">
-              Sign In
-            </a>
-          </div>
+          </div>  
         </div>
 
         <Drawer anchor="left" open={isOpen} onClose={isClose(false)} style={ {color: 'white',  backgroundColor: '#00000008'} } sx={{ "& .MuiDrawer-paper": { backgroundColor: '#8c3e50' } }}>
